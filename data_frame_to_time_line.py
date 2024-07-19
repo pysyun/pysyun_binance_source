@@ -1,15 +1,13 @@
 class DataFrameToTimeLine:
-    def __init__(self, dataframe):
-        self.dataframe = dataframe
 
-    def convert(self):
+    def process(self, data):
         """
         Convert the DataFrame into an array of JSON objects with 'time' and 'value' fields.
 
         :return: List of JSON objects
         """
-        json_array = []
-        for index, row in self.dataframe.iterrows():
+        results = []
+        for index, row in data.iterrows():
             json_obj = {
                 "time": row["time"],
                 "value": {
@@ -20,6 +18,6 @@ class DataFrameToTimeLine:
                     "volume": row["volume"]
                 }
             }
-            json_array.append(json_obj)
+            results.append(json_obj)
 
-        return json_array
+        return results

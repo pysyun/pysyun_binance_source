@@ -1,2 +1,3 @@
 requests
 pandas
+git+https://github.com/pysyun/pysyun_chain.git

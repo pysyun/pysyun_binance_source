@@ -1,3 +1,5 @@
+from pysyun_chain import Chainable
+
 from data_frame_to_time_line import DataFrameToTimeLine
 from klines_source import BinanceKLinesSource
 
@@ -6,10 +8,6 @@ if __name__ == "__main__":
     interval = "30m"
 
     for symbol in symbols:
-        binance_klines_source = BinanceKLinesSource(symbol, interval)
-        data = binance_klines_source.process()
-        print(f"Fetched data for {symbol}:\n", data.head())
-
-        dataframe_to_timeline = DataFrameToTimeLine(data)
-        json_timeline = dataframe_to_timeline.convert()
+        json_timeline = (Chainable(BinanceKLinesSource(symbol, interval)) | Chainable(DataFrameToTimeLine())).process(
+            symbol)
         print(f"JSON timeline for {symbol}:\n", json_timeline[:5])  # Print first 5 entries for brevity

@@ -71,7 +71,7 @@ class BinanceKLinesSource:
 
         return df
 
-    def process(self):
+    def process(self, data):
         """
         Perform a single iteration of fetching data from the Binance API
 
