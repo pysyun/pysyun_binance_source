@@ -10,4 +10,4 @@ if __name__ == "__main__":
     for symbol in symbols:
         json_timeline = (Chainable(BinanceKLinesSource(symbol, interval)) | Chainable(DataFrameToTimeLine())).process(
             symbol)
-        print(f"JSON timeline for {symbol}:\n", json_timeline[:5])  # Print first 5 entries for brevity
+        print(f"JSON timeline for {symbol}:\n", json_timeline)  # Print first 5 entries for brevity
