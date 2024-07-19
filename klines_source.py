@@ -37,7 +37,8 @@ class BinanceKLinesSource:
         self.last_time = data[0][0]  # Update last_time with the opening time of the fetched data
         return self._to_dataframe(data)
 
-    def _to_dataframe(self, data):
+    @staticmethod
+    def _to_dataframe(data):
         """
         Convert raw kline data into a pandas DataFrame
 
@@ -77,31 +78,3 @@ class BinanceKLinesSource:
         :return: DataFrame containing fetched kline data
         """
         return self.fetch_data()
-
-
-class DataFrameToTimeLine:
-    def __init__(self, dataframe):
-        self.dataframe = dataframe
-
-    def convert(self):
-        """
-        Convert the DataFrame into an array of JSON objects with 'time' and 'value' fields.
-
-        :return: List of JSON objects
-        """
-        json_array = []
-        for index, row in self.dataframe.iterrows():
-            json_obj = {
-                "time": row["time"],
-                "value": {
-                    "open": row["open"],
-                    "high": row["high"],
-                    "low": row["low"],
-                    "close": row["close"],
-                    "volume": row["volume"]
-                }
-            }
-            json_array.append(json_obj)
-
-        return json_array
-

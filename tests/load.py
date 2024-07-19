@@ -1,4 +1,5 @@
-from main import BinanceKLinesSource, DataFrameToTimeLine
+from data_frame_to_time_line import DataFrameToTimeLine
+from klines_source import BinanceKLinesSource
 
 if __name__ == "__main__":
     symbols = ['BTCUSDT', 'ETHUSDT', 'ADAUSDT', 'SOLUSDT']
