@@ -60,7 +60,7 @@ class BinanceKLinesSource:
         df['Close'] = pd.to_numeric(df['Close'], errors='coerce')
         df['Volume'] = pd.to_numeric(df['Volume'], errors='coerce')
         df = df.rename(columns={
-            'Open time': 'datetime',
+            'Open time': 'time',
             'Open': 'open',
             'High': 'high',
             'Low': 'low',
