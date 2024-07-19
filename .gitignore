@@ -1,3 +1,5 @@
 .idea
 .env
 .corpora
+__pycache__
+
